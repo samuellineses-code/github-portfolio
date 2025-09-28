@@ -112,7 +112,14 @@
     function show(kind){
       let items=data[kind];
       let html=`<h2>${kind.toUpperCase()}</h2>`;
-      html+=`<div class='card'><form id='f'><input id='t' placeholder='Title' required><br><br><input id='d' placeholder='Date'><br><br><input type='file' id='i' accept='image/*'><br><br><button>Add</button></form></div>`;
+      html+=`<div class='card'>
+        <form id='f'>
+          <input id='t' placeholder='Title' required><br><br>
+          <input id='d' placeholder='Date'><br><br>
+          <input type='file' id='i' accept='image/*'><br><br>
+          <button>Add</button>
+        </form>
+      </div>`;
       html+="<div class='card'><ul>"+(items.length?items.map(it=>`<li><b>${it.title}</b> (${it.date})<br>${it.img?`<img src='${it.img}'>`:''}<br><button onclick=del('${kind}',${it.id})>Delete</button></li>`).join(''):'<li>No items yet</li>')+"</ul></div>";
       content.innerHTML=html;
       f.onsubmit=e=>{
@@ -134,3 +141,4 @@
   </script>
 </body>
 </html>
+
